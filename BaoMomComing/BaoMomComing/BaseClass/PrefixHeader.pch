@@ -1,0 +1,124 @@
+//
+//  PrefixHeader.pch
+//  BaoMomComing
+//
+//  Created by xj_love on 16/7/28.
+//  Copyright © 2016年 Xander. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#endif
+
+#if 1
+
+#elif 0
+
+#endif
+
+#define MaxQueue 1
+#define HEADER 64
+#define FOOT 49
+
+
+#define SCREEN_FRAME ([UIScreen mainScreen].applicationFrame)
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#define MAIN_WINDOW [[[UIApplication sharedApplication] delegate] window]
+
+#define databaseName @"BaoMomComing.sqlite"                     //数据库名称
+#define loadingMessage @"加载中,请稍后..."
+#define netWorkError @"网络连接失败! "
+#define net_tip @"现在是2G/3G/4G网络,下载内容将消耗您的流量,是否继续下载?"
+#define play_tip @"现在是2G/3G/4G网络,播放视频将消耗您的流量,是否继续播放?"
+
+#define downloadFinished @"downloadFinished"
+#define initDwonloadStatus @"initDwonloadStatus"
+
+#define DownloadPath [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
+#define AppPath [[NSBundle mainBundle] resourcePath]
+
+//app版本
+#define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+
+#define IMAGE_URL(_STR_) [_STR_ hasPrefix:@"http"] == YES ? [NSURL URLWithString:[_STR_ stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : [NSURL URLWithString:[[NSString stringWithFormat:@"%@%@", Host, _STR_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+
+
+//下段代码的意思就是 用宏指令做一个判断，如果DEBUG为真，则编译#ifdef到#endif宏定义，否则编译器就不编译；
+/*
+ 在 "Target > Build Settings > Preprocessor Macros > Debug" 里有一个"DEBUG=1"。
+ 
+ 设置为Debug模式下，Product-->Scheme-->SchemeEdit Scheme
+ 设置Build Configuration成Debug时，就可以打印nslog了。
+ 设置Release，发布app版本的时候就不会打印了，提高了性能
+ */
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+#endif
+
+#ifdef DEBUG
+#define NULLSAFE_ENABLED 0
+#endif
+
+#ifdef __OBJC__
+
+//BaseClass
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "AppDelegate.h"
+#import "XJRootNavigationController.h"
+#import "XJRootTabBarController.h"
+#import "XJRootController.h"
+
+//ThirdPartySDK
+#import "ASIHTTPRequest.h"
+#import "ASINetworkQueue.h"
+#import "ASIFormDataRequest.h"
+#import "Reachability.h"
+#import "FMDB.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "ZipArchive.h"
+
+//Tool
+#import "SCYLayerAddition.h"
+#import "UIView+SCYCategory.h"
+#import "XMTopScrollView.h"
+#import "XMExtension.h"
+#import "CycleScrollView.h"
+#import "DXStarRatingView.h"
+#import "CircularProgressView.h"
+
+//Common
+#import "Common.h"
+#import "SqlStatement.h"
+
+//Mannager
+#import "ShowManager.h"
+#import "HttpManager.h"
+#import "UtilManager.h"
+#import "FileManager.h"
+#import "ParseManager.h"
+#import "SqliteManager.h"
+
+//DataHandle
+//Agent
+#import "EBookAgent.h"
+
+//Dao
+#import "DownBookDao.h"
+
+//MianController
+#import "XJBMCMusicViewController.h"
+#import "XJBMCMediaViewController.h"
+#import "XJBMCShopViewController.h"
+#import "XJBMCCommunityViewController.h"
+#import "XJBMCNewsViewController.h"
+
+#endif

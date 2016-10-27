@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wHc-WM-gol">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--宝妈资讯-->
+        <scene sceneID="0OF-NC-33q">
+            <objects>
+                <viewController id="cSj-lF-7KV" customClass="XJBMCNewsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gka-58-3hT"/>
+                        <viewControllerLayoutGuide type="bottom" id="zrQ-hs-sTB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eU8-4J-7BK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="宝妈资讯" id="Bld-qG-gka"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIg-2Z-oOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1148.5" y="-849.5"/>
+        </scene>
+        <!--资讯-->
+        <scene sceneID="5EX-fK-sAt">
+            <objects>
+                <navigationController id="xtn-gP-q4K" customClass="XJRootNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="资讯" image="zixun1.png" selectedImage="zixun2.png" id="hpj-Fg-8iA"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="obe-da-iyz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cSj-lF-7KV" kind="relationship" relationship="rootViewController" id="YW8-B5-bgn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fsf-bu-cFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742.5" y="-849.5"/>
+        </scene>
+        <!--Root Tab Bar Controller-->
+        <scene sceneID="baD-15-QUN">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" id="wHc-WM-gol" customClass="XJRootTabBarController" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Cde-8Q-jLv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="V8o-3F-rze" kind="relationship" relationship="viewControllers" id="kbN-hT-XBh"/>
+                        <segue destination="7M9-bo-Mmq" kind="relationship" relationship="viewControllers" id="Gvo-8Q-swp"/>
+                        <segue destination="24v-YL-jMz" kind="relationship" relationship="viewControllers" id="pSL-3e-bq5"/>
+                        <segue destination="tDw-xi-Y7E" kind="relationship" relationship="viewControllers" id="WiB-gS-ywe"/>
+                        <segue destination="xtn-gP-q4K" kind="relationship" relationship="viewControllers" id="fvT-xP-aUf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FsB-kO-Odb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-273.33333333333331" y="-447.30000000000001"/>
+        </scene>
+        <!--社区-->
+        <scene sceneID="B5q-aW-N9l">
+            <objects>
+                <navigationController id="tDw-xi-Y7E" customClass="XJRootNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="社区" image="shejiao1.png" selectedImage="shejiao2.png" id="RW9-go-5b3"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ix-hZ-CWp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rxO-Xa-OaK" kind="relationship" relationship="rootViewController" id="aLT-bz-6vA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cin-d5-rNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196.5" y="-923.5"/>
+        </scene>
+        <!--宝妈社区-->
+        <scene sceneID="rHl-cX-Des">
+            <objects>
+                <viewController id="rxO-Xa-OaK" customClass="XJBMCCommunityViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uPd-ot-Y2j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fg6-on-sUe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6fe-Vv-25n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="宝妈社区" id="f0l-5j-85z"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5E-3B-pA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603.5" y="-917.5"/>
+        </scene>
+        <!--视屏-->
+        <scene sceneID="eHC-yh-EbZ">
+            <objects>
+                <navigationController id="7M9-bo-Mmq" customClass="XJRootNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="视屏" image="shipin1.png" selectedImage="shipin2.png" id="rvS-Xh-sTj"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DAB-2O-uOY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Obc-TP-JBo" kind="relationship" relationship="rootViewController" id="lBB-Je-keJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xdg-fL-fwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-517.5" y="312.5"/>
+        </scene>
+        <!--商城-->
+        <scene sceneID="gtk-6J-MwF">
+            <objects>
+                <navigationController id="24v-YL-jMz" customClass="XJRootNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="商城" image="shop1.png" selectedImage="shop2.png" id="IXT-Jm-L5o"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vz9-QC-W8h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Tqg-xb-hmO" kind="relationship" relationship="rootViewController" id="rgE-ju-3DV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X7M-CU-lO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393.5" y="312.5"/>
+        </scene>
+        <!--宝妈商城-->
+        <scene sceneID="EmM-KG-ADW">
+            <objects>
+                <viewController id="Tqg-xb-hmO" customClass="XJBMCShopViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AWk-To-Pf1"/>
+                        <viewControllerLayoutGuide type="bottom" id="O6N-eU-lWK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Jf-Hj-t9M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="宝妈商城" id="LsE-g6-DYI"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTq-E9-iDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796.5" y="312.5"/>
+        </scene>
+        <!--音乐-->
+        <scene sceneID="UTn-7a-YcN">
+            <objects>
+                <navigationController id="V8o-3F-rze" customClass="XJRootNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="音乐" image="yinyue1.png" selectedImage="yinyue2.png" id="iAa-MV-e1j"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qLW-14-DKJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Gxr-ke-jUH" kind="relationship" relationship="rootViewController" id="A5Z-wY-doa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mg5-Nu-lYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1368.5" y="304.5"/>
+        </scene>
+        <!--宝妈音乐-->
+        <scene sceneID="8zN-vH-gu6">
+            <objects>
+                <viewController id="Gxr-ke-jUH" customClass="XJBMCMusicViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XQx-k5-Psl"/>
+                        <viewControllerLayoutGuide type="bottom" id="eU9-cH-KrB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="60v-Kp-LDD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="宝妈音乐" id="iVY-Dz-hGD"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTR-j4-VPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-979.5" y="304.5"/>
+        </scene>
+        <!--宝妈视屏-->
+        <scene sceneID="F2g-lJ-sIl">
+            <objects>
+                <viewController id="Obc-TP-JBo" customClass="XJBMCMediaViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cVS-xa-XpA"/>
+                        <viewControllerLayoutGuide type="bottom" id="frD-4e-j9V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mWE-41-rYF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="宝妈视屏" id="eTB-fZ-7LZ"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYZ-bq-7d8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-123.5" y="312.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="shejiao1.png" width="30" height="30"/>
+        <image name="shejiao2.png" width="30" height="30"/>
+        <image name="shipin1.png" width="30" height="30"/>
+        <image name="shipin2.png" width="30" height="30"/>
+        <image name="shop1.png" width="30" height="30"/>
+        <image name="shop2.png" width="30" height="30"/>
+        <image name="yinyue1.png" width="30" height="30"/>
+        <image name="yinyue2.png" width="30" height="30"/>
+        <image name="zixun1.png" width="30" height="30"/>
+        <image name="zixun2.png" width="30" height="30"/>
+    </resources>
+</document>

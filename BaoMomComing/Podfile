@@ -1,0 +1,10 @@
+platform :ios, '8.0'
+inhibit_all_warnings!
+target ‘BaoMomComing’ do
+pod 'FMDB'
+pod 'SDWebImage'
+pod 'MJRefresh'
+pod ‘ZipArchive’
+pod ‘ASIHTTPRequest’
+pod 'Reachability'
+end
