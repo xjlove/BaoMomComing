@@ -28,7 +28,7 @@
     //动态更改导航背景/样式
     
     UINavigationBar *bar = [UINavigationBar appearance];
-    [bar setBarTintColor:[UIColor colorWithRed:242.0/255.0 green:132.0/255.0 blue:166/255.0 alpha:1.0]];
+    [bar setBarTintColor:ALLBACK_COLOR];
     [bar setTintColor:[UIColor whiteColor]];
     [bar setTitleTextAttributes:@{
                                   NSForegroundColorAttributeName:

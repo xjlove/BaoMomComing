@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #define MANAGER_UTIL [UtilManager sharedManager]
-#define UTIL_HOST @"www.baidu.com"
 
 @interface UtilManager : NSObject
 
@@ -39,21 +38,6 @@
  * 取当前时间
  */
 - (NSString *)getDateTime:(TimeType)type;
-
-/*
- * 是否wifi
- */
-- (BOOL)isEnableWIFI;
-
-/*
- * 是否3G
- */
-- (BOOL)isEnable3G;
-
-/*
- * 是否有网络
- */
-- (BOOL)isEnableNetWork;
 
 /**
  * 判断空字符串

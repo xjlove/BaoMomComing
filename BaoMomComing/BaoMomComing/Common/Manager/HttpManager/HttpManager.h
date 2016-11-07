@@ -34,11 +34,7 @@
 
 #define MANAGER_HTTP [HttpManager sharedManager]
 
-@interface HttpManager: NSObject <ASIProgressDelegate,ASIHTTPRequestDelegate> {
-    ASINetworkQueue *netWorkQueue;
-    ASINetworkQueue *dataPackageQueue;
-}
-
+@interface HttpManager: NSObject <ASIProgressDelegate>
 
 + (instancetype)sharedManager;
 
@@ -76,14 +72,5 @@
  * POST upload image
  */
 - (void)doUploadImage:(PostModel *)model withSuccessBlock:(GetBackBlock)successBlock withFailBlock:(GetFailBlock)failBlock;
-
-/**
- * 下载json数据文件
- * @param requestURL 访问链接
- * @param fileName 下载的json文件名字
- * @param block 下载完成后的回调函数
- * @param flag 是否显示加载中对话框
- */
-- (void)parseJsonData:(NSString *)URLStr FileName:(NSString *)fileName ShowLoadingMessage:(BOOL)flag JsonType:(ParseJsonType)type finishCallbackBlock:(void (^)(NSMutableArray *result))block;
 
 @end

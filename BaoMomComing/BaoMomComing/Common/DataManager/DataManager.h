@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Download.h"
 
+#define MANAGER_Data [DataManager sharedManager]
+
 @interface DataManager : NSObject <ASIHTTPRequestDelegate> {
     ASINetworkQueue *netWorkQueue;
     ASINetworkQueue *dataPackageQueue;
@@ -29,6 +31,14 @@
 
 #pragma mark - ~~~~~~~~~~~~~~~~~~~~~~~~网络操作~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark - 数据下载(文件)无状态
+/**
+ * 下载json数据文件
+ * @param requestURL 访问链接
+ * @param fileName 下载的json文件名字
+ * @param block 下载完成后的回调函数
+ * @param flag 是否显示加载中对话框
+ */
+- (void)parseJsonData:(NSString *)URLStr FileName:(NSString *)fileName ShowLoadingMessage:(BOOL)flag JsonType:(ParseJsonType)type finishCallbackBlock:(GetBackArrayBlock)block;
 /**
  * 下载不显示状态的文件
  * @param isIms 下载清单文件(YES)还是data包(NO)

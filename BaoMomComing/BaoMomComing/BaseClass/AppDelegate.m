@@ -19,6 +19,11 @@
     
     [MANAGER_FILE createAllDirectory];
     [MANAGER_SQLITE createDatabase];
+    [MANAGER_Reach startReachAbility];
+    
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 4;
     
     return YES;
 }

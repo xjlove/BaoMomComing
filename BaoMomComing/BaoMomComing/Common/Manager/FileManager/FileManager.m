@@ -52,6 +52,7 @@ static FileManager *fileManager = nil;
     [self createDirectory:@"json/subject"];
     [self createDirectory:@"resource"];
     [self createDirectory:@"temporary"];
+    [self createDirectory:@"Media"];
 }
 
 - (void)createDirectory:(NSString *)path {

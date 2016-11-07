@@ -160,41 +160,6 @@ NSInteger intSortCourse(id num1, id num2, void *context) {
 }
 
 /**
-* 是否wifi
-*/
-- (BOOL)isEnableWIFI {
-    return [[Reachability reachabilityForInternetConnection] isReachableViaWiFi];
-}
-
-/**
- * 是否3G
- */
-- (BOOL)isEnable3G {
-    return [[Reachability reachabilityForInternetConnection] isReachableViaWWAN];
-}
-
-/*
- * 是否有网络
- */
-- (BOOL)isEnableNetWork {
-    BOOL status = NO;
-    Reachability *r = [Reachability reachabilityWithHostName:UTIL_HOST];
-    switch ([r currentReachabilityStatus]) {
-        case NotReachable:
-            status = NO;
-            break;
-        case ReachableViaWWAN:
-            status = YES;
-            break;
-        case ReachableViaWiFi:
-            status = YES;
-            break;
-    }
-    
-    return status;
-}
-
-/**
  * 判断空字符串
  */
 - (BOOL)isBlankString:(NSString*)string {

@@ -11,8 +11,11 @@
 
 #endif
 
-#if 1
+#pragma mark - **************************** 常用宏定义 *************************************
 
+#if 1
+#define Host @"http://www.jxgbwlxy.gov.cn/tm"
+#define Resource_Host [NSString stringWithFormat:@"%@/course", Host]
 #elif 0
 
 #endif
@@ -21,11 +24,12 @@
 #define HEADER 64
 #define FOOT 49
 
-
 #define SCREEN_FRAME ([UIScreen mainScreen].applicationFrame)
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 #define MAIN_WINDOW [[[UIApplication sharedApplication] delegate] window]
+#define WS(weakSelf) __unsafe_unretained __typeof(&*self)weakSelf = self;
+#define ALLBACK_COLOR [UIColor colorWithRed:242.0/255.0 green:132.0/255.0 blue:166/255.0 alpha:1.0]
 
 #define databaseName @"BaoMomComing.sqlite"                     //数据库名称
 #define loadingMessage @"加载中,请稍后..."
@@ -48,7 +52,6 @@
 //下段代码的意思就是 用宏指令做一个判断，如果DEBUG为真，则编译#ifdef到#endif宏定义，否则编译器就不编译；
 /*
  在 "Target > Build Settings > Preprocessor Macros > Debug" 里有一个"DEBUG=1"。
- 
  设置为Debug模式下，Product-->Scheme-->SchemeEdit Scheme
  设置Build Configuration成Debug时，就可以打印nslog了。
  设置Release，发布app版本的时候就不会打印了，提高了性能
@@ -65,7 +68,13 @@
 #define NULLSAFE_ENABLED 0
 #endif
 
+#pragma mark - **************************** 数据接口 *************************************
+
+#define BMC_MdieaUrl @"%@/device/recommend.do?user_id=288313&device=1"//宝妈视屏首页
+
 #ifdef __OBJC__
+
+#pragma mark - **************************** 导入头文件 *************************************
 
 //BaseClass
 #import <UIKit/UIKit.h>
@@ -77,6 +86,9 @@
 #import "XJRootController.h"
 
 //ThirdPartySDK
+#import "XjAVPlayerSDK.h"
+
+//pods
 #import "ASIHTTPRequest.h"
 #import "ASINetworkQueue.h"
 #import "ASIFormDataRequest.h"
@@ -97,7 +109,7 @@
 
 //Common
 #import "Common.h"
-#import "SqlStatement.h"
+#import "DataManager.h"
 
 //Mannager
 #import "ShowManager.h"
@@ -106,6 +118,8 @@
 #import "FileManager.h"
 #import "ParseManager.h"
 #import "SqliteManager.h"
+#import "SqlStatement.h"
+#import "ReachManager.h"
 
 //DataHandle
 //Agent
@@ -116,9 +130,21 @@
 
 //MianController
 #import "XJBMCMusicViewController.h"
-#import "XJBMCMediaViewController.h"
+
+
+#import "XJBMCMediaCollectionViewController.h"
+#import "XJMediaDetailViewController.h"
+#import "MediaCollectionViewHeaderCell.h"
+#import "MediaCollectionViewCell.h"
+#import "MyHeadView.h"
+
+
 #import "XJBMCShopViewController.h"
+
+
 #import "XJBMCCommunityViewController.h"
+
+
 #import "XJBMCNewsViewController.h"
 
 #endif

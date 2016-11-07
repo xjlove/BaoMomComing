@@ -50,6 +50,115 @@
 }
 
 #pragma mark - ~~~~~~~~~~~~~~~~~~~~~~~~文件操作~~~~~~~~~~~~~~~~~~~~~~~~~~
+- (void)downloadJSONData:(NSString *)URLStr FileName:(NSString *)fileName ShowLoadingMessage:(BOOL)flag finishCallbackBlock:(void (^)(BOOL))block {
+    if (! [MANAGER_Reach isEnableNetWork]) {
+        
+        block(NO);
+        return;
+        
+    }
+    
+    if (flag) {
+        [MANAGER_SHOW showWithInfo:loadingMessage];
+    }
+    
+    NSURL* requestURL = [NSURL URLWithString:[URLStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:requestURL];
+    __weak ASIHTTPRequest *_request = request;
+    [request setAllowCompressedResponse:YES];
+    [request setShouldContinueWhenAppEntersBackground:YES];
+    [request setTimeOutSeconds:60];
+    [request setCompletionBlock:^{
+        BOOL dataWasCompressed = [_request isResponseCompressed];
+        if (dataWasCompressed) {
+            
+            NSData *uncompressedData = [_request responseData];
+            if (uncompressedData) {
+                [uncompressedData writeToFile:[MANAGER_FILE.CSDownloadPath stringByAppendingPathComponent:[NSString stringWithFormat:@"json/%@",fileName]] atomically:YES];
+            }
+            
+            block(YES);
+        }
+        [MANAGER_SHOW dismiss];
+    }];
+    [request setFailedBlock:^{
+        block(NO);
+        [MANAGER_SHOW dismiss];
+    }];
+    [request startAsynchronous];
+    
+}
+
+/**
+ * 下载json数据文件
+ * @param requestURL 访问链接
+ * @param fileName 下载的json文件名字
+ * @param block 下载完成后的回调函数
+ * @param flag 是否显示加载中对话框
+ */
+- (void)parseJsonData:(NSString *)URLStr FileName:(NSString *)fileName ShowLoadingMessage:(BOOL)flag JsonType:(ParseJsonType)type finishCallbackBlock:(GetBackArrayBlock)block {
+    NSLog(@"url = %@", URLStr);
+    [self downloadJSONData:URLStr FileName:fileName ShowLoadingMessage:flag finishCallbackBlock:^(BOOL result) {
+        
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSData *fileData = [fm contentsAtPath:[MANAGER_FILE.CSDownloadPath stringByAppendingPathComponent:[NSString stringWithFormat:@"json/%@", fileName]]];
+        
+        if(fileData) {
+            
+            NSError *error;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:fileData options:kNilOptions error:&error];
+            if (json == nil) {
+                NSLog(@"json parse failed \r\n");
+                block(nil);
+                return;
+            }
+            
+            NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+            
+            NSString *status = [json objectForKey:@"status"];
+            if ([status intValue] == 1) {
+                dataArray = [self getDownloadArray:json JsonType:type];
+                block(dataArray);
+            }else {
+                block(nil);
+            }
+        }
+        else {
+            block(nil);
+            NSLog(@"file %@ read failed", fileName);
+        }
+        
+    }];
+    
+}
+
+- (NSMutableArray *)getDownloadArray:(NSDictionary *)dict JsonType:(ParseJsonType)type {
+    NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+    NSArray *array = [[NSArray alloc] init];
+    switch (type) {
+        case ParseJsonTypeBMCMedia:
+        {
+            NSMutableArray *big = [[NSMutableArray alloc] init];
+            NSMutableArray *small = [[NSMutableArray alloc] init];
+            
+            array = [dict objectForKey:@"recommend_big"];
+            [big addObjectsFromArray:array];
+            [dataArray addObject:big];
+            
+            array = [dict objectForKey:@"recommend_small"];
+            [small addObjectsFromArray:array];
+            [dataArray addObject:small];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return dataArray;
+}
 
 #pragma mark - ~~~~~~~~~~~~~~~~~~~~~~~~网络操作~~~~~~~~~~~~~~~~~~~~~~~~~~
 #pragma mark - 数据下载(文件)无状态
@@ -134,7 +243,7 @@
 - (void)downloadFile:(NSString *)urlStr withType:(int)type finishCallbackBlock:(void (^)(BOOL result))block {
     [MANAGER_SHOW dismiss];
     
-    if (![MANAGER_UTIL isEnableNetWork]) {
+    if (![MANAGER_Reach isEnableNetWork]) {
         block(NO);
         return;
     }
@@ -186,7 +295,7 @@
 #pragma mark - 数据下载(文件)
 - (void)downloadDataPackage:(Download *)dl {
     
-    if (![MANAGER_UTIL isEnableNetWork]) {
+    if (![MANAGER_Reach isEnableNetWork]) {
         [MANAGER_SHOW showInfo:netWorkError];
         return;
     }
@@ -231,7 +340,7 @@
  * @param Download 下载对象
  */
 - (void)downloadResource:(Download *)dl {
-    if (![MANAGER_UTIL isEnableNetWork]) {
+    if (![MANAGER_Reach isEnableNetWork]) {
         [MANAGER_SHOW showInfo:netWorkError];
         return;
     }
@@ -511,7 +620,7 @@
 //    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"user_%@", userID]];
 //    _login = [[Login alloc] initWithDictionary:dict];
     
-    if ([MANAGER_UTIL isEnableNetWork]) {
+    if ([MANAGER_Reach isEnableNetWork]) {
         [self verifyUserPermissionsWith:userID FinishBlock:^(BOOL result) {
             block(result);
         }];
@@ -659,26 +768,18 @@
 #pragma mark -
 static DataManager *sharedDataManager = nil;
 
-+ (DataManager *) sharedManager {
-    @synchronized(self)
-	{
-        if (sharedDataManager == nil)
-		{
-            return [[self alloc] init];
-        }
-    }
-	
++ (instancetype)sharedManager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedDataManager = [[DataManager alloc] init];
+    });
+    
     return sharedDataManager;
 }
 
-+(id)alloc {
-	@synchronized(self)
-	{
-		NSAssert(sharedDataManager == nil, @"Attempted to allocate a second instance of a singleton.");
-		sharedDataManager = [super alloc];
-		return sharedDataManager;
-	}
-	return nil;
++ (instancetype)alloc {
+    NSAssert(sharedDataManager == nil, @"Attempted to allocate a second instance of a singleton.");
+    return [super alloc];
 }
 
 @end

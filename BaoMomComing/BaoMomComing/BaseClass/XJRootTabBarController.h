@@ -10,9 +10,5 @@
 
 @interface XJRootTabBarController : UITabBarController
 
-/**
- *  是否显示tabbar
- */
-@property (nonatomic,assign)Boolean isShowTabbar;
 
 @end

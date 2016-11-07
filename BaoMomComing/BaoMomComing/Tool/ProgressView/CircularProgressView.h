@@ -2,7 +2,7 @@
 //  CircularProgressView.h
 //  CloudClassRoom
 //
-//  Created by like on 2014/11/27.
+//  Created by xj_love on 2014/11/27.
 //  Copyright (c) 2014年 like. All rights reserved.
 //
 

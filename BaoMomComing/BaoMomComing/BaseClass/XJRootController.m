@@ -10,4 +10,19 @@
 
 @implementation XJRootController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+//更改状态栏颜色
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return  UIStatusBarStyleLightContent;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 @end

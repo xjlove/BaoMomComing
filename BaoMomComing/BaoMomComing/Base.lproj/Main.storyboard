@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wHc-WM-gol">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wHc-WM-gol">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIg-2Z-oOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1148.5" y="-849.5"/>
+            <point key="canvasLocation" x="-612.5333333333333" y="-804.19333333333327"/>
         </scene>
         <!--资讯-->
         <scene sceneID="5EX-fK-sAt">
@@ -43,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fsf-bu-cFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-742.5" y="-849.5"/>
+            <point key="canvasLocation" x="-396" y="-804.19333333333327"/>
         </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="baD-15-QUN">
@@ -66,7 +66,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FsB-kO-Odb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-273.33333333333331" y="-447.30000000000001"/>
+            <point key="canvasLocation" x="-145.77777777777777" y="-423.44400000000002"/>
         </scene>
         <!--社区-->
         <scene sceneID="B5q-aW-N9l">
@@ -85,7 +85,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cin-d5-rNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196.5" y="-923.5"/>
+            <point key="canvasLocation" x="104.8" y="-874.24666666666667"/>
         </scene>
         <!--宝妈社区-->
         <scene sceneID="rHl-cX-Des">
@@ -106,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5E-3B-pA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603.5" y="-917.5"/>
+            <point key="canvasLocation" x="321.86666666666667" y="-868.56666666666661"/>
         </scene>
         <!--视屏-->
         <scene sceneID="eHC-yh-EbZ">
@@ -120,12 +120,217 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Obc-TP-JBo" kind="relationship" relationship="rootViewController" id="lBB-Je-keJ"/>
+                        <segue destination="Bri-B4-GpT" kind="relationship" relationship="rootViewController" id="baV-Uk-M7O"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdg-fL-fwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-517.5" y="312.5"/>
+            <point key="canvasLocation" x="-276" y="295.83333333333331"/>
+        </scene>
+        <!--宝妈视频-->
+        <scene sceneID="y5S-ja-fTr">
+            <objects>
+                <collectionViewController id="Bri-B4-GpT" customClass="XJBMCMediaCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="w2s-Yc-7XH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DeF-mF-dfh">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MediaCollectionViewHeaderCell" reuseIdentifier="MediaCollectionViewHeaderCell" id="was-GN-kov" customClass="MediaCollectionViewHeaderCell">
+                                <rect key="frame" x="0.0" y="64" width="375" height="345"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="345"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scrollBackImg" translatesAutoresizingMaskIntoConstraints="NO" id="duj-SE-ydS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                                        </imageView>
+                                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SlI-6I-flQ">
+                                            <rect key="frame" x="168" y="160" width="39" height="37"/>
+                                            <color key="currentPageIndicatorTintColor" red="0.97544864509999996" green="0.75283260200000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </pageControl>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-kD-R1O">
+                                            <rect key="frame" x="0.0" y="190" width="667" height="150"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4o-rN-kdW">
+                                                    <rect key="frame" x="43" y="80" width="40" height="40"/>
+                                                    <state key="normal" image="huiyuan"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="T6P-f1-dKp"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-ox-QWQ">
+                                                    <rect key="frame" x="209" y="80" width="40" height="40"/>
+                                                    <state key="normal" image="zuiai"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="WeM-nV-uTI"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgf-Sd-fex">
+                                                    <rect key="frame" x="126" y="10" width="40" height="40"/>
+                                                    <state key="normal" image="huobao"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="x8Y-QC-RWw"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqk-DY-FR5">
+                                                    <rect key="frame" x="209" y="10" width="40" height="40"/>
+                                                    <state key="normal" image="zimeiti"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="b4l-hO-dp4"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlf-Kx-k5o">
+                                                    <rect key="frame" x="292" y="10" width="40" height="40"/>
+                                                    <state key="normal" image="zhibo"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="LQ2-9R-kIH"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyj-Ka-nHb">
+                                                    <rect key="frame" x="292" y="80" width="40" height="40"/>
+                                                    <state key="normal" image="xiazai"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="nNb-yw-Hhw"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="会员专享" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66g-iv-FPD">
+                                                    <rect key="frame" x="36" y="124" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="宝妈课堂" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3W-ae-aTW">
+                                                    <rect key="frame" x="36" y="54" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="热推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zM-rs-I2Y">
+                                                    <rect key="frame" x="119" y="54" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自频道" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyR-bX-nUQ">
+                                                    <rect key="frame" x="202" y="54" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="宝妈直播" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KbO-Xu-AKM">
+                                                    <rect key="frame" x="285" y="54" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="礼物" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQl-1D-TlD">
+                                                    <rect key="frame" x="119" y="124" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="最爱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxy-eg-JTD">
+                                                    <rect key="frame" x="202" y="124" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmZ-7R-ZNO">
+                                                    <rect key="frame" x="43" y="10" width="40" height="40"/>
+                                                    <state key="normal" image="mv"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="D8J-in-0yu"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="已下载" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIs-2p-tpR">
+                                                    <rect key="frame" x="285" y="124" width="55" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msF-RG-MDl">
+                                                    <rect key="frame" x="126" y="80" width="40" height="40"/>
+                                                    <state key="normal" image="liwu"/>
+                                                    <connections>
+                                                        <action selector="userClickAction:" destination="was-GN-kov" eventType="touchUpInside" id="bBX-CX-Ak2"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VgW-y4-Xwc">
+                                            <rect key="frame" x="0.0" y="340" width="375" height="5"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="375" height="345"/>
+                                <connections>
+                                    <outlet property="cutView" destination="VgW-y4-Xwc" id="snC-MT-O1I"/>
+                                    <outlet property="menuBackView" destination="AEs-kD-R1O" id="fIK-Ol-xH7"/>
+                                    <outlet property="pageControl" destination="SlI-6I-flQ" id="V8W-2h-hcw"/>
+                                    <outlet property="scrollBackImg" destination="duj-SE-ydS" id="aGf-Y2-4cz"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MediaCollectionViewCell" reuseIdentifier="MediaCollectionViewCell" id="3RT-2B-VNw" customClass="MediaCollectionViewCell">
+                                <rect key="frame" x="118" y="419" width="140" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="175"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="宝妈来了" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="iIM-rd-OmM">
+                                            <rect key="frame" x="0.0" y="110" width="140" height="41"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="9" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="谢大大" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3D-mr-YEc">
+                                            <rect key="frame" x="0.0" y="155" width="50" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.42189213269999998" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1992-02-05" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzC-yM-L5f">
+                                            <rect key="frame" x="50" y="155" width="90" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.42189213269999998" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scrollBackImg" translatesAutoresizingMaskIntoConstraints="NO" id="35v-Jn-ycL">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="108"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <size key="customSize" width="140" height="175"/>
+                                <connections>
+                                    <outlet property="mediaImg" destination="35v-Jn-ycL" id="KpB-6J-BZK"/>
+                                    <outlet property="mediaTItle" destination="iIM-rd-OmM" id="Rti-kO-8t7"/>
+                                    <outlet property="mediaTime" destination="fzC-yM-L5f" id="7nL-lK-Ahe"/>
+                                    <outlet property="mediaWriter" destination="Q3D-mr-YEc" id="ir8-W1-hbU"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Bri-B4-GpT" id="Muj-bS-gI7"/>
+                            <outlet property="delegate" destination="Bri-B4-GpT" id="jOP-Vv-k5l"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="宝妈视频" id="5Vf-of-I8F"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftK-Md-jvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29.5" y="307.5"/>
         </scene>
         <!--商城-->
         <scene sceneID="gtk-6J-MwF">
@@ -144,7 +349,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7M-CU-lO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393.5" y="312.5"/>
+            <point key="canvasLocation" x="483.5" y="295.5"/>
         </scene>
         <!--宝妈商城-->
         <scene sceneID="EmM-KG-ADW">
@@ -165,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTq-E9-iDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796.5" y="312.5"/>
+            <point key="canvasLocation" x="698.5" y="295.5"/>
         </scene>
         <!--音乐-->
         <scene sceneID="UTn-7a-YcN">
@@ -184,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mg5-Nu-lYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1368.5" y="304.5"/>
+            <point key="canvasLocation" x="-984.5" y="307.5"/>
         </scene>
         <!--宝妈音乐-->
         <scene sceneID="8zN-vH-gu6">
@@ -205,40 +410,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTR-j4-VPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-979.5" y="304.5"/>
-        </scene>
-        <!--宝妈视屏-->
-        <scene sceneID="F2g-lJ-sIl">
-            <objects>
-                <viewController id="Obc-TP-JBo" customClass="XJBMCMediaViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cVS-xa-XpA"/>
-                        <viewControllerLayoutGuide type="bottom" id="frD-4e-j9V"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mWE-41-rYF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="宝妈视屏" id="eTB-fZ-7LZ"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gYZ-bq-7d8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-123.5" y="312.5"/>
+            <point key="canvasLocation" x="-780.5" y="307.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="huiyuan" width="40" height="40"/>
+        <image name="huobao" width="40" height="40"/>
+        <image name="liwu" width="40" height="40"/>
+        <image name="mv" width="40" height="40"/>
+        <image name="scrollBackImg" width="240" height="150"/>
         <image name="shejiao1.png" width="30" height="30"/>
         <image name="shejiao2.png" width="30" height="30"/>
         <image name="shipin1.png" width="30" height="30"/>
         <image name="shipin2.png" width="30" height="30"/>
         <image name="shop1.png" width="30" height="30"/>
         <image name="shop2.png" width="30" height="30"/>
+        <image name="xiazai" width="40" height="40"/>
         <image name="yinyue1.png" width="30" height="30"/>
         <image name="yinyue2.png" width="30" height="30"/>
-        <image name="zixun1.png" width="30" height="30"/>
+        <image name="zhibo" width="40" height="40"/>
+        <image name="zimeiti" width="40" height="40"/>
+        <image name="zixun1.png" width="20" height="20"/>
         <image name="zixun2.png" width="30" height="30"/>
+        <image name="zuiai" width="40" height="40"/>
     </resources>
 </document>
