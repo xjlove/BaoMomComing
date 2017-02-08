@@ -1,5 +1,5 @@
 //
-//  XJBMCMediaCollectionViewController.h
+//  XJBMCMediaControllerView.h
 //  BaoMomComing
 //
 //  Created by xj_love on 2016/11/4.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XJBMCMediaCollectionViewController : UICollectionViewController
+@interface XJBMCMediaControllerView : XJRootController
 
 @end
