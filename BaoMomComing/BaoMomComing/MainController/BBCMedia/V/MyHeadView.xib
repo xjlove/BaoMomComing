@@ -40,9 +40,6 @@
                     <state key="normal" backgroundImage="btn_home_more">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="buttonClick:" destination="LdV-mu-eju" eventType="touchUpInside" id="Dd5-ft-0en"/>
-                    </connections>
                 </button>
             </subviews>
             <constraints>

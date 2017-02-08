@@ -2,8 +2,8 @@
 //  ShowManager.m
 //  CloudClassRoom
 //
-//  Created by xj_love on 16/7/29.
-//  Copyright © 2016年 Xander. All rights reserved.
+//  Created by rgshio on 15/11/20.
+//  Copyright © 2015年 like. All rights reserved.
 //
 
 #import "ShowManager.h"
@@ -46,6 +46,7 @@ static ShowManager *showManager = nil;
 #pragma mark - property
 - (void)setProgress:(CGFloat)progress {
     hud.progress = progress;
+    
     if (progress == 1) {
         [self dismiss];
     }
@@ -54,7 +55,8 @@ static ShowManager *showManager = nil;
 #pragma mark - selector
 - (void)setProgressHUD {
     hud.color = [UIColor colorWithRed:(float)210/255 green:(float)210/255 blue:(float)210/255 alpha:0.9];
-    hud.labelColor = [UIColor colorWithRed:(float)0/255 green:(float)113/255 blue:(float)220/255 alpha:1];
+    hud.labelColor = ALLBACK_COLOR;
+    
 }
 
 - (void)setHUDOrientation {
@@ -67,9 +69,11 @@ static ShowManager *showManager = nil;
             break;
         case UIInterfaceOrientationLandscapeLeft:
             hud.transform = CGAffineTransformMakeRotation(0);
+            
             break;
         case UIInterfaceOrientationLandscapeRight:
             hud.transform = CGAffineTransformMakeRotation(0);
+            
             break;
             
         default:
@@ -80,6 +84,7 @@ static ShowManager *showManager = nil;
 - (void)removeHUD {
     [hud removeFromSuperview];
     hud = nil;
+    
 }
 
 #pragma mark - MBProgressHUD
@@ -91,9 +96,8 @@ static ShowManager *showManager = nil;
     if (hud) {
         return;
     }
-    
     hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.mode = MBProgressHUDModeText;
     hud.labelText = info;
     hud.delegate = self;
     [hud hide:YES afterDelay:2];
@@ -113,9 +117,9 @@ static ShowManager *showManager = nil;
     if (hud) {
         return;
     }
-    
     hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.labelText = info;
+    
     
     [self setProgressHUD];
     
@@ -128,12 +132,13 @@ static ShowManager *showManager = nil;
     if (hud) {
         return;
     }
-    
     hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
     //设置模式为进度框形的
     hud.mode = MBProgressHUDModeDeterminate;
     hud.labelText = info;
     hud.progress = 0;
+    
+    
     
     [self setProgressHUD];
     
@@ -144,6 +149,7 @@ static ShowManager *showManager = nil;
 
 - (void)dismiss {
     [hud hide:YES];
+    
     [self removeHUD];
 }
 

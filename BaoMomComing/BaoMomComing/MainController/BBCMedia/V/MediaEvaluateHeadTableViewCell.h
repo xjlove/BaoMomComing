@@ -10,4 +10,6 @@
 
 @interface MediaEvaluateHeadTableViewCell : UITableViewCell
 
+@property (nonatomic, copy) void (^doEvaluateWithStar)(NSNumber *star);
+
 @end

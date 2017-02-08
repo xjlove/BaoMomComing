@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MediaIntroductionView : UIView
+@interface MediaIntroductionView : UIScrollView<UIScrollViewDelegate>
+{
+    UIView                      *moveView;
+    UILabel                     *info;
+    
+    CGSize                      contentSize;
+    CGSize                      singleSize;
+    CGRect                      infoRect;
+}
+
+/**
+ *  设置视频简介信息
+ *
+ *  @param mediaModel
+ */
+- (void)setMediaIntroductionWith:(MediaModel*)mediaModel;
 
 @end

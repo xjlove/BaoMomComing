@@ -7,4 +7,5 @@ pod 'MJRefresh'
 pod ‘ZipArchive’
 pod ‘ASIHTTPRequest’
 pod 'Reachability'
+pod ‘Masonry’
 end

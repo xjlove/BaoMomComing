@@ -10,4 +10,12 @@
 
 @interface NewsHeaderCellView : UITableViewCell
 
+/**
+ *  配置头部滑动图数据
+ *
+ *  @param dataArrM 数据，可变数组，NewsModel
+ *  @param type ，咨询类型 0.头条 1.其它
+ */
+- (void)setNewsHeaderCellWithData:(NSMutableArray *)dataArrM withType:(int)type;
+
 @end

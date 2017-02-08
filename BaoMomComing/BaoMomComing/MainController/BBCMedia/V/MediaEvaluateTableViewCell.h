@@ -10,4 +10,6 @@
 
 @interface MediaEvaluateTableViewCell : UITableViewCell
 
+- (void)setMediaEvaluateTableViewCellWithData:(EvaluateModel *)evaluateModel;
+
 @end

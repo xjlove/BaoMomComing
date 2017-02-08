@@ -1,5 +1,5 @@
 //
-//  NewsBottomMenuView.h
+//  NewsDetailBottomMenuView.h
 //  BaoMomComing
 //
 //  Created by xj_love on 2016/11/29.
@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsBottomMenuView : UIView
+@interface NewsDetailBottomMenuView : UIView
+/**
+ *  移除键盘监听
+ */
+- (void)removeNewsdetailBMObserver;
+
+@property (nonatomic, copy) void (^shareNewsBlock)();
 
 @end

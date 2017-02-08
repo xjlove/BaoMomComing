@@ -8,6 +8,6 @@
 
 #import "XJRootController.h"
 
-@interface BMCNews_SocietyHotVC : XJRootController
+@interface BMCNews_SocietyHotVC : XJRootController<ZJScrollPageViewChildVcDelegate>
 
 @end

@@ -10,4 +10,9 @@
 
 @implementation NewsAgent
 
+SYNTHESIZE_SINGLETON_FOR_CLASS(NewsAgent)
+
+- (void)doGetNewsJsonDataWithType:(int)type isCache:(BOOL)Flag WithCompletionBlock:(GetBackArrayBlock)completionBlock withFailBlock:(GetFailBlock)failBlock{
+}
+
 @end

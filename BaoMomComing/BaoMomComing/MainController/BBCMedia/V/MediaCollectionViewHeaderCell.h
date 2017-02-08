@@ -16,6 +16,4 @@
  */
 - (void)setMediaHeaderCellWithDataArr:(NSMutableArray*)dataArrM;
 
-@property (nonatomic, copy)void (^headerScrollViewClicked)(NSUInteger index);
-
 @end

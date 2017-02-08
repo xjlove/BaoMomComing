@@ -52,10 +52,9 @@
 #pragma mark - ~~~~~~~~~~~~~~~~~~~~~~~~文件操作~~~~~~~~~~~~~~~~~~~~~~~~~~
 - (void)downloadJSONData:(NSString *)URLStr FileName:(NSString *)fileName ShowLoadingMessage:(BOOL)flag finishCallbackBlock:(void (^)(BOOL))block {
     if (! [MANAGER_Reach isEnableNetWork]) {
-        
         block(NO);
+        [MANAGER_SHOW dismiss];
         return;
-        
     }
     
     if (flag) {
@@ -70,16 +69,17 @@
     [request setShouldContinueWhenAppEntersBackground:YES];
     [request setTimeOutSeconds:60];
     [request setCompletionBlock:^{
-        BOOL dataWasCompressed = [_request isResponseCompressed];
-        if (dataWasCompressed) {
-            
+        //是否压缩
+//        BOOL dataWasCompressed = [_request isResponseCompressed];
+//        if (dataWasCompressed) {
+        
             NSData *uncompressedData = [_request responseData];
             if (uncompressedData) {
                 [uncompressedData writeToFile:[MANAGER_FILE.CSDownloadPath stringByAppendingPathComponent:[NSString stringWithFormat:@"json/%@",fileName]] atomically:YES];
             }
             
             block(YES);
-        }
+//        }
         [MANAGER_SHOW dismiss];
     }];
     [request setFailedBlock:^{
@@ -149,6 +149,48 @@
             array = [dict objectForKey:@"recommend_small"];
             [small addObjectsFromArray:array];
             [dataArray addObject:small];
+            
+        }
+            break;
+        case ParseJsonTypeMediaDetail:{
+            
+            if ([[dict objectForKey:@"status"] intValue] == 1) {
+                array = [dict objectForKey:@"course"];
+                for (NSDictionary *dict in array) {
+                    MediaModel *newsModel = [[MediaModel alloc] initWithDictionary:dict];
+                    [dataArray addObject:newsModel];
+                }
+            }
+            
+        }
+            break;
+        case ParseJsonTypeMediaComment:{
+            
+            if ([[dict objectForKey:@"status"] intValue] == 1) {
+                
+                NSDictionary *sub = [dict objectForKey:@"mycomment"];
+                if (sub.count != 0) {
+                    EvaluateModel *evaluate = [[EvaluateModel alloc] initWithDictionary:sub];
+                    [dataArray addObject:evaluate];
+                }
+                
+                array = [dict objectForKey:@"comment"];
+                for (NSDictionary *dict in array) {
+                    EvaluateModel *evaluateModel = [[EvaluateModel alloc] initWithDictionary:dict];
+                    [dataArray addObject:evaluateModel];
+                }
+            }
+            
+            
+        }
+            break;
+        case ParseJsonTypeBMCNews:{
+            
+            array = [dict objectForKey:@"tngou"];
+            for (NSDictionary *dict in array) {
+                NewsModel *newsModel = [[NewsModel alloc] initWithDictionary:dict];
+                [dataArray addObject:newsModel];
+            }
             
         }
             break;

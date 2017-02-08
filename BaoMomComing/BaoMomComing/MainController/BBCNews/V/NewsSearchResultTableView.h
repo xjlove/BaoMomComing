@@ -10,4 +10,6 @@
 
 @interface NewsSearchResultTableView : UITableView
 
+- (void)setNewsSearchResultTableViewWithDict:(NSDictionary*)dict;
+
 @end

@@ -34,9 +34,10 @@
     // Do any additional setup after loading the view.
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    [[UITabBar appearance] setTintColor:ALLBACK_COLOR];
     
     UIView *bgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
-    bgView.backgroundColor = [UIColor colorWithRed:242.0/255.0 green:132.0/255.0 blue:166/255.0 alpha:0.7];
+    bgView.backgroundColor = [UIColor whiteColor];
     [self.tabBar insertSubview:bgView atIndex:0];
     self.tabBar.opaque = YES;
     

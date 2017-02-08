@@ -48,6 +48,14 @@
  */
 - (CGFloat)xjCurrentRate;
 /**
+ *  播放成功回调
+ */
+@property (nonatomic, copy)void (^xjPlaySuccessBlock)();
+/**
+ *  播放失败回调
+ */
+@property (nonatomic, copy)void (^xjPlayFailBlock)();
+/**
  *  取得加载进度
  */
 @property (nonatomic, copy)void (^xjLoadedTimeBlock)(CGFloat time);

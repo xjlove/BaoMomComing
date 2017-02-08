@@ -67,6 +67,20 @@
 #pragma mark - **************************** xjAVPlayer方法 ************************
 - (void)xjAVPlayerBLock{
     WS(weakSelf);
+    //播放成功回调
+    self.xjPlayer.xjPlaySuccessBlock = ^{
+//        weakSelf.bottomMenu.xjPlay = YES;  //进来就播放
+        [weakSelf.loadingView stopAnimating];
+        [weakSelf.loadingView setHidesWhenStopped:YES];
+    };
+    //播放失败回调
+    self.xjPlayer.xjPlayFailBlock = ^{
+        weakSelf->isStop = YES;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.loadingView stopAnimating];
+            [weakSelf.loadingView setHidesWhenStopped:YES];
+        });
+    };
     //加载进度
     self.xjPlayer.xjLoadedTimeBlock = ^(CGFloat time){
         weakSelf.bottomMenu.xjLoadedTimeRanges = time;
@@ -106,7 +120,7 @@
     };
     //播放延迟
     self.xjPlayer.xjDelayPlay = ^(BOOL flag){
-        if (flag) {
+        if (flag&&!weakSelf->isStop) {
             [weakSelf.loadingView startAnimating];
         }else{
             [weakSelf.loadingView stopAnimating];
@@ -121,7 +135,7 @@
     self.backView.userTapGestureBlock = ^(NSUInteger number,BOOL flag){
         if (number == 1) {
             [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.topMenu.hidden = flag;
+//                weakSelf.topMenu.hidden = flag;
                 weakSelf.bottomMenu.hidden = flag;
             }];
         }else if (number == 2){
@@ -178,8 +192,13 @@
             [weakSelf.XjAVPlayerSDKDelegate xjNextPlayer];
         }
     };
-    //滑动条拖动
+    //滑动条滑动时
     self.bottomMenu.xjSliderValueChangeBlock = ^(CGFloat time){
+        [weakSelf.xjPlayer xjSeekToTimeWithSeconds:time];
+        [weakSelf.xjPlayer xjPause];
+    };
+    //滑动条拖动完成
+    self.bottomMenu.xjSliderValueChangeEndBlock = ^(CGFloat time){
         [weakSelf.xjPlayer xjSeekToTimeWithSeconds:time];
     };
     //放大/缩小
@@ -224,8 +243,8 @@
 - (XJTopMenu *)topMenu{
     if (_topMenu == nil) {
         _topMenu = [[XJTopMenu alloc] init];
-        _topMenu.backgroundColor = [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
-        _topMenu.hidden = YES;
+        _topMenu.backgroundColor = [UIColor clearColor];
+//        _topMenu.hidden = YES;
         [self xjTopMenuBlock];
     }
     return _topMenu;
@@ -250,6 +269,7 @@
 - (UIActivityIndicatorView *)loadingView{
     if (_loadingView == nil) {
         _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [_loadingView startAnimating];
     }
     return _loadingView;
 }

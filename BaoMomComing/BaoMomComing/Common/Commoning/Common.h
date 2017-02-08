@@ -56,9 +56,10 @@ typedef NS_ENUM(NSInteger, TimeType) {
 
 //解析json数据
 typedef NS_ENUM (NSInteger, ParseJsonType) {
-    ParseJsonTypeLogin,
-    ParseJsonTypeBookMenu,
-    ParseJsonTypeBMCMedia
+    ParseJsonTypeBMCMedia,
+    ParseJsonTypeMediaDetail,
+    ParseJsonTypeMediaComment,
+    ParseJsonTypeBMCNews
 };
 
 //删除下载列表时的个数

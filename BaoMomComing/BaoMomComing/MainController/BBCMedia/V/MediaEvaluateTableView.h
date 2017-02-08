@@ -1,5 +1,5 @@
 //
-//  MediaEvaluateView.h
+//  MediaEvaluateTableView.h
 //  BaoMomComing
 //
 //  Created by xj_love on 2016/11/9.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MediaEvaluateView : UIView
+@interface MediaEvaluateTableView : UITableView
+
+@property (nonatomic, strong) NSString *meidaID;
 
 @end

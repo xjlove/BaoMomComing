@@ -20,10 +20,12 @@
     [MANAGER_FILE createAllDirectory];
     [MANAGER_SQLITE createDatabase];
     [MANAGER_Reach startReachAbility];
+    [MANAGER_Share registShareSDK];
     
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 4;
+    //图标信息提示
+//    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = 4;
     
     return YES;
 }

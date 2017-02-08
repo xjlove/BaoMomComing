@@ -13,7 +13,7 @@
 @property (nonatomic, assign)CGFloat xjTotalTime;
 @property (nonatomic, assign)CGFloat xjCurrentTime;
 @property (nonatomic, assign)CGFloat xjLoadedTimeRanges;
-@property (nonatomic, assign)BOOL xjPlay;
+@property (nonatomic, assign)BOOL xjPlay;//双击时的播放暂停
 @property (readwrite)BOOL xjFull;
 @property (nonatomic, assign)BOOL xjPlayEnd;
 /**
@@ -25,9 +25,13 @@
  */
 @property (nonatomic, copy)void (^xjNextPlayerBlock)();
 /**
- *  滑动条滑动
+ *  滑动条滑动时
  */
 @property (nonatomic, copy)void (^xjSliderValueChangeBlock)(CGFloat value);
+/**
+ *  滑动条滑动完成
+ */
+@property (nonatomic, copy)void (^xjSliderValueChangeEndBlock)(CGFloat value);
 /**
  *  放大/缩小
  */

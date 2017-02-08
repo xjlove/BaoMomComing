@@ -13,7 +13,6 @@ typedef NS_ENUM(NSInteger, XMTopItemShowType) {
     XMTopItemShowTypeCenter,            //居中显示(单数)
     XMTopItemShowTypeAll                //完整显示
 };
-
 @protocol XMTopScrollViewDelegate <NSObject>
 
 - (void)selectClickAction:(NSInteger)index;

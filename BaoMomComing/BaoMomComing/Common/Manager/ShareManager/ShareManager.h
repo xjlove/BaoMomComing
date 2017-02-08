@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#define MANAGER_Share [ShareManager sharedManager]
+
 @interface ShareManager : NSObject
+
++ (instancetype)sharedManager;
+
+- (void)registShareSDK;
+
+- (void)shareMessagingWithShareBackImg:(NSString *)Img text:(NSString*)text url:(NSString *)url title:(NSString *)title;
 
 @end

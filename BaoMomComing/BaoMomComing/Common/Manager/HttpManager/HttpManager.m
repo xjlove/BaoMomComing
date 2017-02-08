@@ -40,7 +40,11 @@ static HttpManager *httpManager = nil;
         return;
     }
     
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlstr]];
+    NSLog(@"%@",urlstr);
+    
+    NSURL* requestURL = [NSURL URLWithString:[urlstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:requestURL];
     [request startAsynchronous];
     
     __block ASIHTTPRequest *_request = request;
@@ -59,7 +63,7 @@ static HttpManager *httpManager = nil;
                 failBlock([_request error]);
                 break;
         }
-        [MANAGER_SHOW dismiss];
+//        [MANAGER_SHOW dismiss];
     }];
     [request setFailedBlock:^{
         failBlock([_request error]);

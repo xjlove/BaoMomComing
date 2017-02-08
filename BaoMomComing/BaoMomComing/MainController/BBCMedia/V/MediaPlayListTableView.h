@@ -1,5 +1,5 @@
 //
-//  MediaPlayListView.h
+//  MediaPlayListTableView.h
 //  BaoMomComing
 //
 //  Created by xj_love on 2016/11/9.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MediaPlayListView : UIView
+@interface MediaPlayListTableView : UITableView
+
+@property (nonatomic, strong) NSString *meidaID;
 
 @end

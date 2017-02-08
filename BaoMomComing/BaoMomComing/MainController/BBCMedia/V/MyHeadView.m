@@ -11,7 +11,14 @@
 @implementation MyHeadView
 
 - (void)setLabelText:(NSString *)text Row:(NSInteger)index isShow:(BOOL)flag {
-    self.titleLabel.text = text;
+    
+    if (index == 101) {
+        self.titleLabel.text = @"最新视频";
+    }else if(index == 102){
+        self.titleLabel.text = @"最热视频";
+    }else{
+        self.titleLabel.text = @"推荐视频";
+    }
     self.moreButton.tag = index;
 }
 

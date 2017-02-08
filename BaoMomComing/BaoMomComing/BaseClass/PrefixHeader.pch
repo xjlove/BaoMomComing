@@ -14,10 +14,13 @@
 #pragma mark - **************************** 常用宏定义 *************************************
 
 #if 1
-#define Host @"http://www.jxgbwlxy.gov.cn/tm"
-#define Resource_Host [NSString stringWithFormat:@"%@/course", Host]
-#elif 0
+#define Host_media @"http://cela.gwypx.com.cn:84/tm"//宝妈视频主机
+#define Resource_Host_media [NSString stringWithFormat:@"%@/course", Host]
 
+#define Host_news @"http://www.tngou.net/api"//宝妈资讯主机
+#define Host_news_img @"http://tnfs.tngou.net/image"//资讯图片前缀
+
+#elif 0
 #endif
 
 #define MaxQueue 1
@@ -28,7 +31,6 @@
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 #define MAIN_WINDOW [[[UIApplication sharedApplication] delegate] window]
-#define WS(weakSelf) __unsafe_unretained __typeof(&*self)weakSelf = self;
 #define ALLBACK_COLOR [UIColor colorWithRed:242.0/255.0 green:132.0/255.0 blue:166/255.0 alpha:1.0]
 
 #define databaseName @"BaoMomComing.sqlite"                     //数据库名称
@@ -46,8 +48,9 @@
 //app版本
 #define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
-#define IMAGE_URL(_STR_) [_STR_ hasPrefix:@"http"] == YES ? [NSURL URLWithString:[_STR_ stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : [NSURL URLWithString:[[NSString stringWithFormat:@"%@%@", Host, _STR_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+#define IMAGE_URL_Media(_STR_) [_STR_ hasPrefix:@"http"] == YES ? [NSURL URLWithString:[_STR_ stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : [NSURL URLWithString:[[NSString stringWithFormat:@"%@%@", Host_media, _STR_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
 
+#define IMAGE_URL_News(_STR_) [_STR_ hasPrefix:@"http"] == YES ? [NSURL URLWithString:[_STR_ stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] : [NSURL URLWithString:[[NSString stringWithFormat:@"%@%@", Host_news_img, _STR_] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
 
 //下段代码的意思就是 用宏指令做一个判断，如果DEBUG为真，则编译#ifdef到#endif宏定义，否则编译器就不编译；
 /*
@@ -68,17 +71,40 @@
 #define NULLSAFE_ENABLED 0
 #endif
 
-#pragma mark - **************************** 数据接口 *************************************
+#define WS(weakSelf) __unsafe_unretained __typeof(&*self)weakSelf = self;
+//weak和strong的宏定义
+#define weakify(...) \
+ext_keywordify \
+metamacro_foreach_cxt(ext_weakify_,, __weak, __VA_ARGS__)
+#define strongify(...) \
+ext_keywordify \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
+metamacro_foreach(ext_strongify_,, __VA_ARGS__) \
+_Pragma("clang diagnostic pop")
 
-#define BMC_MdieaUrl @"%@/device/recommend.do?user_id=288313&device=1"//宝妈视屏首页
+#pragma mark - **************************** 数据接口 *************************************
+//视频
+#define BMC_MediaUrl @"%@/device/recommend.do?user_id=1372&device=1"//宝妈视屏首页
+#define BMC_Media_DetailURL @"%@/device/course.do?course_id=%@"//视频详情页
+#define BMC_Media_comment_list @"%@/device/comment!list.do?course_id=%@&user_id=1372&comment_id=%@" //视屏评论列表
+#define BMC_Media_comment_send @"%@/device/comment!send.do"                      //提交视屏评论POST
+
+//资讯
+#define BMC_News_ScrollUrl @"%@/lore/list?id=%d&rows=20"//资讯轮播图列表
+#define BMC_News_ScrollDetailUrl @"%@/lore/show?id=%@"//资论轮播图详情
+#define BMC_News_ListUrl @"%@/info/list?id=%d&page=%d&rows=20"//资讯列表
+#define BMC_News_DetailUrl @"%@/info/show?id=%@"//资讯详情
+#define BMC_News_Search_newsUrl @"%@/search?name=info&keyword=%@&type=title,message&rows=20"//资讯搜索
+#define BMC_News_Search_answerUrl @"%@/search?name=ask&keyword=%@&type=title,message&rows=20"//问答搜索
 
 #ifdef __OBJC__
 
 #pragma mark - **************************** 导入头文件 *************************************
-
 //BaseClass
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 #import "AppDelegate.h"
 #import "XJRootNavigationController.h"
@@ -87,6 +113,14 @@
 
 //ThirdPartySDK
 #import "XjAVPlayerSDK.h"
+#import "PYSearch.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <ShareSDKUI/ShareSDKUI.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WeiboSDK.h"
 
 //pods
 #import "ASIHTTPRequest.h"
@@ -106,6 +140,9 @@
 #import "CycleScrollView.h"
 #import "DXStarRatingView.h"
 #import "CircularProgressView.h"
+#import "CBAutoScrollLabel.h"
+#import "ZJScrollPageView.h"
+#import <Masonry.h>
 
 //Common
 #import "Common.h"
@@ -120,6 +157,7 @@
 #import "SqliteManager.h"
 #import "SqlStatement.h"
 #import "ReachManager.h"
+#import "ShareManager.h"
 
 //DataHandle
 //Agent
@@ -128,23 +166,60 @@
 //Dao
 #import "DownBookDao.h"
 
-//MianController
-#import "XJBMCMusicViewController.h"
+#pragma mark - **************************** MianController *************************************
+//资讯
+#import "XJBMCNewsViewController.h"
+#import "BMCNews_HeadLineVC.h"
+#import "BMCNews_EnterpriseVC.h"
+#import "BMCNews_MedicalVC.h"
+#import "BMCNews_LiveTapsVC.h"
+#import "BMCNews_DrugVC.h"
+#import "BMCNews_FoodVC.h"
+#import "BMCNews_SocietyHotVC.h"
+#import "BMCNews_DiseaseVC.h"
+#import "NewsDetailViewController.h"
 
-
-#import "XJBMCMediaCollectionViewController.h"
+//视频
+#import "XJBMCMediaViewController.h"
 #import "XJMediaDetailViewController.h"
+
+//商城
+#import "XJBMCShopViewController.h"
+
+//社区
+#import "XJBMCCommunityViewController.h"
+
+//我
+
+#pragma mark - **************************** model *************************************
+//资讯
+#import "NewsModel.h"
+
+//视频
+#import "MediaModel.h"
+#import "EvaluateModel.h"
+
+#pragma mark - **************************** view *************************************
+//视频
+#import "MediaCollectionView.h"
 #import "MediaCollectionViewHeaderCell.h"
 #import "MediaCollectionViewCell.h"
 #import "MyHeadView.h"
+#import "MediaDetailHeadView.h"
+#import "MediaDetailScrollView.h"
+#import "MediaIntroductionView.h"
+#import "MediaPlayListTableView.h"
+#import "MediaEvaluateTableView.h"
+#import "MediaEvaluateTableViewCell.h"
+#import "MediaEvaluateHeadTableViewCell.h"
+#import "MediaSubmitEvaluateView.h"
 
-
-#import "XJBMCShopViewController.h"
-
-
-#import "XJBMCCommunityViewController.h"
-
-
-#import "XJBMCNewsViewController.h"
+//资讯
+#import "NewsTableView.h"
+#import "NewsListTableViewCell.h"
+#import "NewsHeaderCellView.h"
+#import "NewsDetailWkWebView.h"
+#import "NewsDetailBottomMenuView.h"
+#import "NewsSearchResultTableView.h"
 
 #endif

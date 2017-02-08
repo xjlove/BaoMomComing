@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-HEADER-FOOT)];
+    img.image = [UIImage imageNamed:@"noSome"];
+    [self.view addSubview:img];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -126,6 +126,21 @@ NSInteger intSortCourse(id num1, id num2, void *context) {
     return nil;
 }
 
+- (NSString *)timeWithTimeIntervalString:(NSString *)timeString
+{
+    // 格式化时间
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    formatter.timeZone = [NSTimeZone timeZoneWithName:@"shanghai"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    // 毫秒值转化为秒
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timeString doubleValue]/ 1000.0];
+    NSString* dateString = [formatter stringFromDate:date];
+    return dateString;
+}
+
 /*
  * 取当前时间
  */
@@ -182,8 +197,7 @@ NSInteger intSortCourse(id num1, id num2, void *context) {
  *是否可以在相册中选择图片
  */
 - (BOOL)canUserPickPhotosFromPhotoLibrary {
-//    return [self cameraSupportsMedia:(NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    return YES;
+    return [self cameraSupportsMedia:(NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
 
 /*
@@ -314,6 +328,5 @@ NSInteger intSortCourse(id num1, id num2, void *context) {
         
     return string;
 }
-
 
 @end

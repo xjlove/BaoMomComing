@@ -1,3 +1,4 @@
+
 //
 //  MediaSubmitEvaluateView.m
 //  BaoMomComing
@@ -8,14 +9,33 @@
 
 #import "MediaSubmitEvaluateView.h"
 
+@interface MediaSubmitEvaluateView ()
+
+@property (nonatomic, strong) UIView *whiteBackView;
+
+@end
+
 @implementation MediaSubmitEvaluateView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        
+    }
+    return self;
 }
-*/
+
+#pragma mark - **************************** 懒加载 ************************************
+- (UIView *)whiteBackView{
+    if (_whiteBackView == nil) {
+        _whiteBackView = [[UIView alloc] init];
+    }
+    return _whiteBackView;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    self.whiteBackView.frame = CGRectMake((self.width-213)*0.5,(self.height-287)*0.5 , 287, 213);
+}
 
 @end

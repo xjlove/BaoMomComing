@@ -13,6 +13,7 @@
 
 @interface XJAVPlyer (){
     BOOL isSuccess;
+    BOOL isPlayNow;
 }
 
 @property (nonatomic, strong) AVPlayer       *xjPlayer;
@@ -77,6 +78,8 @@
     [self.xjPlayerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];//监听status属性变化
     [self.xjPlayerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];//监听loadedTimeRanges属性变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(xjPlayerEndPlay:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.xjPlayerItem];//注册监听，视屏播放完成
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterPlayGround) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 
@@ -98,15 +101,29 @@
             if (self.xjTotalTimeBlock) {
                 self.xjTotalTimeBlock(totalSecond);
             }
+            if (self.xjPlaySuccessBlock) {
+                self.xjPlaySuccessBlock();
+            }
+            
+            CGFloat currentSecond = self.xjPlayerItem.currentTime.value/self.xjPlayerItem.currentTime.timescale;//获取当前时间
+            if (self.xjCurrentTimeBlock) {
+                self.xjCurrentTimeBlock(currentSecond);
+            }
             
             [self monitoringXjPlayerBack];//监听播放状态
             
         }else if (playerItem.status == AVPlayerItemStatusUnknown){
             NSLog(@"播放未知");
             isSuccess = NO;
+            if (self.xjPlayFailBlock) {
+                self.xjPlayFailBlock();
+            }
         }else if (playerItem.status == AVPlayerStatusFailed){
             NSLog(@"播放失败");
             isSuccess = NO;
+            if (self.xjPlayFailBlock) {
+                self.xjPlayFailBlock();
+            }
         }
     }else if ([keyPath isEqualToString:@"loadedTimeRanges"]){
         
@@ -139,6 +156,18 @@
     }
 }
 
+//程序进入后台（如果播放，则暂停，否则不管）
+- (void)appDidEnterBackground{
+    if (isPlayNow) {
+        [self.xjPlayer pause];
+    }
+}
+//程序进入前台（退出前播放，进来后继续播放，否则不管）
+- (void)appDidEnterPlayGround{
+    if (isPlayNow) {
+        [self.xjPlayer play];
+    }
+}
 
 //实时监听播放状态
 - (void)monitoringXjPlayerBack{
@@ -205,6 +234,7 @@
 #pragma mark - **************************** 外部接口 *************************************
 - (void)xjPlay{
     [self.xjPlayer play];
+    isPlayNow = YES;
     if (!self.link) {
         self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(upadte)];//和屏幕频率刷新相同的定时器
         [self.link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
@@ -212,6 +242,7 @@
 }
 
 - (void)xjPause{
+    isPlayNow = NO;
     if (self.link) {
         [self.link removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         self.link = nil;
@@ -253,6 +284,7 @@
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [self xjRemoveObserver];
     [self.xjPlayer pause];
+    isPlayNow = NO;
     [self.xjPlayer setRate:0];
     [self.xjPlayer replaceCurrentItemWithPlayerItem:nil];
     self.xjPlayerItem = nil;

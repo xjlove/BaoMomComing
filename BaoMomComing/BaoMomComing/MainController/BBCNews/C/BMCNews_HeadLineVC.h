@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BMCNews_HeadLineVC : UIViewController
+@interface BMCNews_HeadLineVC : XJRootController<ZJScrollPageViewChildVcDelegate>
 
 @end

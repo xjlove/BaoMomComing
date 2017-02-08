@@ -10,4 +10,16 @@
 
 @interface NewsDetailViewController : XJRootController
 
+/**
+ *  资讯详情ID
+ */
+@property (nonatomic, strong) NSString *newsDetailID;
+/**
+ *  类型0.头条，1.其它
+ */
+@property (nonatomic, assign) int type;
+
+@property (nonatomic, strong) NSString *newsTitle;
+@property (nonatomic, strong) NSString *img;
+
 @end

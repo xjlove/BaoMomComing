@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176469999998" green="0.48627450979999998" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.51764705882352935" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6Ee-16-H2R" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6jd-Ml-kXr"/>
                             <constraint firstItem="6Ee-16-H2R" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="17" id="AGZ-lg-0jP"/>

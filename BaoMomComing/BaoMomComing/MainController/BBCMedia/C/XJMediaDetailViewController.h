@@ -10,4 +10,6 @@
 
 @interface XJMediaDetailViewController : XJRootController
 
+@property (nonatomic, strong) NSString *mediaID;
+
 @end

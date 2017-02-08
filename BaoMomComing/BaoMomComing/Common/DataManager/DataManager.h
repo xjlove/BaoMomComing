@@ -78,13 +78,10 @@
  */
 - (int)getCurrentOperationCount;
 
-
 /*
  *从等待队列加载下载资源
  */
 - (void)startDownloadFromWaiting;
-
-
 /**
  * 验证用户权限
  */

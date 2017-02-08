@@ -40,6 +40,11 @@
 - (NSString *)getDateTime:(TimeType)type;
 
 /**
+ *  时间戳转化为时间
+ */
+- (NSString *)timeWithTimeIntervalString:(NSString *)timeString;
+
+/**
  * 判断空字符串
  */
 - (BOOL)isBlankString:(NSString*)string;

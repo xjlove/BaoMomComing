@@ -120,20 +120,20 @@
 
 //slider拖动时
 - (void)playSliderValueChanging:(id)sender{
+    isPlay = NO;
     UISlider *slider = (UISlider*)sender;
-    if (slider.value == 0.000) {
-        if (self.xjSliderValueChangeBlock) {
-            self.xjSliderValueChangeBlock(slider.value);
-        }
+    if (self.xjSliderValueChangeBlock) {
+        self.xjSliderValueChangeBlock(slider.value);
     }
 }
 
 //slider完成拖动时
 - (void)playSliderValueDidChanged:(id)sender{
     UISlider *slider = (UISlider*)sender;
-    if (self.xjSliderValueChangeBlock) {
-        self.xjSliderValueChangeBlock(slider.value);
+    if (self.xjSliderValueChangeEndBlock) {
+        self.xjSliderValueChangeEndBlock(slider.value);
     }
+    [self playOrPauseAction];
 }
 
 #pragma mark - **************************** 懒加载 *************************************
@@ -213,6 +213,7 @@
 }
 
 - (void)setXjPlay:(BOOL)xjPlay{
+    
     [self playOrPauseAction];
 }
 
